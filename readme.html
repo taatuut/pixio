@@ -27,26 +27,30 @@
 
         <h1>Pixio!</h1>
         <p>Online Pictionary using MongoDB Atlas, Phaser and Realm. I coined it Pixio for no specific reason. Play a
-            game of Pixio with friends everywhere on mobile and laptop!</p>
+            game of Pixio with friends everywhere on mobile and laptop! Go directly to <a target="_blank"
+                href="https://mongo-draws-pzzoc.mongodbstitch.com/">https://mongo-draws-pzzoc.mongodbstitch.com/</a> or
+            read how you can build this game yourself too.</p>
 
-            <img src="./images/game_host.jpg" />
+        <img src="./images/game_host.jpg" />
 
         <h1>Where do I get my inspiration from...</h1>
-        <p>Heavily inspired on (or: very borrowed from) <a target="_blank"
+        <p>This pet project was heavily inspired on (read: completely borrowed) from the post at <a target="_blank"
                 href="https://developer.mongodb.com/how-to/creating-multiplayer-drawing-game-phaser">https://developer.mongodb.com/how-to/creating-multiplayer-drawing-game-phaser</a>,
             a very nice and readable MongoDB Developer How-to article by Nic Raboy. So thanks a lot <a target="_blank"
                 href="https://developer.mongodb.com/author/nic-raboy">Nic</a>!</p>
 
         <h1>Gimme the code!</h1>
-        <p>The code can of course be found in the original How-to article. I stored my version in a GitHub repository at <a
-                target="_blank" href="https://github.com/taatuut/pixio">https://github.com/taatuut/pixio</a><br />
+        <p>The code can of course be found in the original How-to article. I stored my version in a GitHub repository at
+            <a target="_blank" href="https://github.com/taatuut/pixio">https://github.com/taatuut/pixio</a><br />
             You can just use the code from the Pixio repo and it works out of the box after meeting these requirements:
         </p>
         <ul>
             <li>Setup your own MongoDB Atlas cluster (available as free tier)</li>
             <li>Create your own Realm app (available in the free tier)</li>
             <li>Host the code somewhere (just use Realm Hosting for it, you are creating the app there anyway).</li>
-            <li>Replace the value for realmAppId in the <code>index.html</code> file with your own Realm App id! More in where to find that later. If you don't use your own Realm app, your pixios end up in my database because I did not take my Realm App id out of the code ¯\_(ツ)_/¯
+            <li>Replace the value for realmAppId in the <code>index.html</code> file with your own Realm App id! More in
+                where to find that later. If you don't use your own Realm app, your pixios end up in my database because
+                I did not take my Realm App id out of the code ¯\_(ツ)_/¯
             </li>
         </ul>
 
@@ -62,8 +66,9 @@
 
         <h2>MongoDB Atlas</h2>
         <p>If you don't have a (free) MongoDB Atlas cluster running yet, go to <a target="_blank"
-                href="https://www.mongodb.com/cloud">https://www.mongodb.com/cloud</a> and click <b>[ Try MongoDB Cloud Now
-            ]</b> and signup. If you already have a cluster up, login there. In your Atlas cluster, create a
+                href="https://www.mongodb.com/cloud">https://www.mongodb.com/cloud</a> and click <b>[ Try MongoDB Cloud
+                Now
+                ]</b> and signup. If you already have a cluster up, login there. In your Atlas cluster, create a
             database <code>mongo-draws</code> with a collection <code>game</code>.</p>
 
         <img src="./images/mongo-draws_game.jpg" />
@@ -184,17 +189,16 @@
         <p>
             The cool thing about this exercise, is that I am able to create a real life online running multi-player game
             in less than an hour without the need to setup any server, compute or storage resources for the database as
-            this is part of the MongoDB Atlas cluster setup, and Realm offers both the spot to create your app (with
-            users, rules) and to host the code. This writeup
-            actually took way more time than bringing the game up and running... And this time even my family is
-            interested in the results
-            of something work related! </p>
-        <p>But kidding aside, a user friendly serverless Cloud approach just connecting the
-            necessary components is the way to be up and running quickly. Reducing time to market with your next killer
-            product, while addressing the business goals in the blink of an eye. Now all I need to do is sharpen my
+            this is part of the MongoDB Atlas cluster setup, and Realm offers both the possibilities to create your app
+            (with users, rules), and to host the code. This writeup
+            actually took way more time than bringing the game up and running... And even my family is
+            interested in the results of something work related this time! </p>
+        <p>But kidding aside, this user friendly serverless Cloud approach just connecting the
+            necessary components is the way to be up and running quickly with any application. Reducing time to market with your next killer product, while addressing the business goals in the blink of an eye. Now all I need to do is sharpen my
             drawing skills :-)
-            
-        </p><p><i>Happy Pixio, now go play!</i>
+
+        </p>
+        <p><i>Happy Pixio, now go play!</i>
         </p>
 
         <img src="./images/ezpixio.gif" />
