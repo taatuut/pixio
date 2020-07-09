@@ -26,8 +26,10 @@
     <div class="container-fluid">
 
         <h1>Pixio!</h1>
-        <p>Online Pictionary using MongoDB Atlas, Phaser and Realm, I coined it Pixio for no specific reason. Play a
-            game Pixio with friends everywhere on mobile and laptop!</p>
+        <p>Online Pictionary using MongoDB Atlas, Phaser and Realm. I coined it Pixio for no specific reason. Play a
+            game of Pixio with friends everywhere on mobile and laptop!</p>
+
+            <img src="./images/game_host.jpg" />
 
         <h1>Where do I get my inspiration from...</h1>
         <p>Heavily inspired on (or: very borrowed from) <a target="_blank"
@@ -36,30 +38,32 @@
                 href="https://developer.mongodb.com/author/nic-raboy">Nic</a>!</p>
 
         <h1>Gimme the code!</h1>
-        <p>The code can of course be found in the original How-to. I stored my version in a GitHub repository at <a
+        <p>The code can of course be found in the original How-to article. I stored my version in a GitHub repository at <a
                 target="_blank" href="https://github.com/taatuut/pixio">https://github.com/taatuut/pixio</a><br />
-            You can just use the code from the repo and it will work out of the box after you:</p>
+            You can just use the code from the Pixio repo and it works out of the box after meeting these requirements:
+        </p>
         <ul>
             <li>Setup your own MongoDB Atlas cluster (available as free tier)</li>
             <li>Create your own Realm app (available in the free tier)</li>
             <li>Host the code somewhere (just use Realm Hosting for it, you are creating the app there anyway).</li>
-            <li>Replace the value for realmAppId in the index.html file with your own Realm App id! If you don't, your
-                pixios end up in my database because I did not take Realm App id out of the code ¯\_(ツ)_/¯</li>
+            <li>Replace the value for realmAppId in the <code>index.html</code> file with your own Realm App id! More in where to find that later. If you don't use your own Realm app, your pixios end up in my database because I did not take my Realm App id out of the code ¯\_(ツ)_/¯
+            </li>
         </ul>
 
         <h1>How do I get this working?</h1>
-        <p>Check out the readme.html in the Github repo or online at <a target="_blank"
+        <p>Check out the readme.html in the Pixio repo or online at <a target="_blank"
                 href="https://mongo-draws-pzzoc.mongodbstitch.com/readme.html">https://mongo-draws-pzzoc.mongodbstitch.com/readme.html</a>
         </p>
 
         <h2>Application</h2>
-        <p>Click above link and follow the tutorial until you created the index.html and game.js file up to the point
+        <p>If you are not using the code from the Pixio repo, then click above link and follow the tutorial until you
+            created the <code>index.html</code> and <code>game.js</code> file up to the point
             where it says 'You did it!'.</p>
 
         <h2>MongoDB Atlas</h2>
         <p>If you don't have a (free) MongoDB Atlas cluster running yet, go to <a target="_blank"
-                href="https://www.mongodb.com/cloud">https://www.mongodb.com/cloud</a> and click [ Try MongoDB Cloud Now
-            ] and signup. If you already have a running cluster, login to your cluster. In your Atlas cluster, create a
+                href="https://www.mongodb.com/cloud">https://www.mongodb.com/cloud</a> and click <b>[ Try MongoDB Cloud Now
+            ]</b> and signup. If you already have a cluster up, login there. In your Atlas cluster, create a
             database <code>mongo-draws</code> with a collection <code>game</code>.</p>
 
         <img src="./images/mongo-draws_game.jpg" />
@@ -72,12 +76,13 @@
         <img src="./images/realm.jpg" />
 
         <p>Then click [ Create a New App ] and give it the name <code>mongo-draws</code> and connect it to the cluster
-            where you created the mongo-draws database just a moment ago.</p>
+            where you created the <code>mongo-draws</code> database just a moment ago.</p>
 
         <img src="./images/realmcreate.jpg" />
 
         <p>Now the page for the newly created app opens. Enable anonymous authentication by clicking the Providers tab
-            in the Users area of the Realm dashboard.</p>
+            in the Users area of the Realm dashboard, then click <b>[ Edit ]</b> on the line saying 'Allow users to log
+            in anonymously'.</p>
 
         <img src="./images/realmanon.jpg" />
 
@@ -86,8 +91,10 @@
         <img src="./images/realmanonsave.jpg" />
 
         <p>
-            Anonymous access is now enabled, but must be deployed to take effect. Click <b>[ Review & Deploy]</b>, in the
-            window that opens you can review the code changes, then click <b>[ Deploy ]</b>. You will see a message appear with
+            Anonymous access is now enabled, but must be deployed to take effect. Click <b>[ Review & Deploy]</b>, in
+            the
+            window that opens you can review the code changes, then click <b>[ Deploy ]</b>. You will see a message
+            appear with
             timestamp saying 'Deployment was successful!'.
         </p>
 
@@ -99,49 +106,98 @@
         </p>
 
 
-        Go to the Rules area, confirm that 'No template' is the selected item and click [ Configure Collection ]
+        <p>Go to the Rules area, confirm that 'No template' is the selected item and click <b>[ Configure Collection
+                ]</b></p>
 
-        Within the Rules area of the Realm dashboard, create two rules for the game collection. The first rule is for
-        the document owner, give them read and write ability. For non-owners watching the game need read access. Make
-        sure to specify that the owner_id of the document is to be mapped to the document owner, during the process of
-        creating rules.
+        <img src="./images/realmrules.jpg" />
 
-        First do owner, then click [ + NEW ROLE ] and create non-owner role.
+        <p>Within the Rules area of the Realm dashboard, create two rules for the <code>game</code> collection. </p>
 
-        [images]
+        <img src="./images/realmrulesowner.jpg" />
 
-        You will end up with something like this
+        <p>The first rule is for the document owners, give them read and write ability. Non-owners watching Pixio need
+            read access. Make sure to specify that the <code>owner_id</code> of the document is to be mapped to the
+            document owner, during the process of creating rules.</p>
 
-        [img]
+        <img src="./images/owneredit.jpg" />
+        <br />
+        <img src="./images/owner.jpg" />
 
-        Don't forget to save and deploy. MongoDB Atlas and Realm are now ready to be used in our game.
+        <p>First finish owner, then click <b>[ + NEW ROLE ]</b>> and create non-owner role.</p>
 
-        Now it is into the game.js and index.html files again for some more edits.
+        <img src="./images/nonowner.jpg" />
 
-        After that go back to the Realm applications overview to find your mongo-draws app there too.
+        <p>You will end up with something like this:
+        </p>
 
-        [img]
+        <img src="./images/realmrulesdone.jpg" />
 
-        If you go back in your app, you can copy the app id you need to put in the index.html file replacing the
-        REALM_APP_ID value in the new Game property "realmAppId".
+        <p>
+            Don't forget to save and deploy. MongoDB Atlas and Realm are now ready to roll with you in Pixio!
+        </p>
+        <p>
+            If you are following the How-to, it is time to go back here for some more edits to the <code>game.js</code>
+            and <code>index.html</code> files. If you use the code from the Pixio repo, you are almost done. In both
+            cases you need to add your own Realm App id as the last step. To get that id, go to the Realm applications
+            overview to find your <code>mongo-draws</code> app there too.
+        </p>
 
-        When done, make sure to save all your efforts and deploy somewhere Hint: use Realm Hosting
-        https://docs.mongodb.com/realm/hosting/ an option available in the app page too.
+        <img src="./images/realmappsoverview.jpg" />
 
-        [img]
+        <p>
+            If you go back in your app, you can copy the app id you need to put in the <code>index.html</code> file
+            replacing the REALM_APP_ID value in the new Game property "realmAppId" (if you use yhe code from the Pixio
+            repo, there might already be another value, just replace that one).
+        </p>
 
-        Enabling hosting gives you the possibility to upload content through the Realm UI or by using the Realm CLI. It
-        comes with a default index.html that we will oevrwrite when uploading our content. Hosting also gives you a
-        custom name for your app (in my case it is https://mongo-draws-pzzoc.mongodbstitch.com/), and you can even hook
-        up a domain name you own.
+        <img src="./images/copyappid.jpg" />
+        <br />
+        <img src="./images/REALM_APP_ID.jpg" />
 
-        https://stitch-statichosting-prod.s3.amazonaws.com/5f05d33eb0446543ed7532cd/index.html
+        <p>
+            When done, make sure to save all your efforts and deploy this code somewhere on a webserver.</p>
 
-        [img]
+        <p>Hint: use <a target="_blank" href="https://docs.mongodb.com/realm/hosting/">Realm Hosting</a><a
+                target="_blank"
+                href="https://docs.mongodb.com/realm/hosting/">https://docs.mongodb.com/realm/hosting/</a>
+            an option available in the Realm app page too.
+        </p>
 
-        [img]
+        <img src="./images/realmhosting.jpg" />
 
-        Again, also after uploading content, don't forget to review and deploy the changes.
+        <p>
+            Enabling hosting gives you the possibility to upload content through the Realm UI or by using the Realm CLI.
+            It comes with a default index.html (<i>Hello, World!</i>) that we will overwrite when uploading our content.
+
+        </p>
+        <img src="./images/helloworld.jpg" />
+
+        <p>
+            Hosting also gives you a custom name for your app (in my case it is <a target="_blank"
+                href="https://mongo-draws-pzzoc.mongodbstitch.com/">https://mongo-draws-pzzoc.mongodbstitch.com/</a>),
+            and you can even hook up a domain name you own.
+        </p>
+
+        Again, also after uploading content to Realm Hosting, don't forget to review and deploy the changes.
+
+        <h1>Conclusion</h1>
+        <p>
+            The cool thing about this exercise, is that I am able to create a real life online running multi-player game
+            in less than an hour without the need to setup any server, compute or storage resources for the database as
+            this is part of the MongoDB Atlas cluster setup, and Realm offers both the spot to create your app (with
+            users, rules) and to host the code. This writeup
+            actually took way more time than bringing the game up and running... And this time even my family is
+            interested in the results
+            of something work related! </p>
+        <p>But kidding aside, a user friendly serverless Cloud approach just connecting the
+            necessary components is the way to be up and running quickly. Reducing time to market with your next killer
+            product, while addressing the business goals in the blink of an eye. Now all I need to do is sharpen my
+            drawing skills :-)
+            
+        </p><p><i>Happy Pixio, now go play!</i>
+        </p>
+
+        <img src="./images/ezpixio.gif" />
 
     </div>
 
